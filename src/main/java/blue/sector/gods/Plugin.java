@@ -1,5 +1,7 @@
 package blue.sector.gods;
 
+import blue.sector.gods.commands.TestCommand;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Plugin extends JavaPlugin {
