@@ -5,13 +5,9 @@ import blue.sector.gods.Plugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import blue.sector.gods.Plugin;
 
 public class TestCommand implements CommandExecutor {
-    Plugin plugin;
-
-    public TestCommand(Plugin plugin) {
-        this.plugin = plugin;
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
