@@ -70,14 +70,16 @@ public class GodsManager {
 	    DateFormat formatter = new SimpleDateFormat(this.pattern);
 	    double power = 0;
 	    try {
-		power = this.godsConfig.getDouble(godName + ".power") + 1 - ((thisDate.getTime() - formatter.parse(this.godsConfig.getString(godName + ".lastUpdate")).getTime()) / 1000);
+		power = this.godsConfig.getDouble(godName + ".power") + 1 - (((thisDate.getTime() - formatter.parse(this.godsConfig.getString(godName + ".lastUpdate")).getTime()) / 1000) / 1);
 		this.godsConfig.set(godName + ".power", power);
 		this.godsConfig.set(godName + ".lastUpdate", formatter.format(thisDate));
 	    } catch (Exception ex) {
 		return false;
 	    }
-	    Plugin.instance().getServer().broadcastMessage(godName + " has " + power);
+	    if(power <= 0)
+		Plugin.instance().getServer().broadcastMessage(godName + " has lost all power");
 		
+	    //Plugin.instance().getServer().broadcastMessage(godName + " has " + String.valueOf(power));
 	    save();
 	    return true;
 	    
@@ -85,7 +87,7 @@ public class GodsManager {
 	    Date thisDate = new Date();
 	    DateFormat formatter = new SimpleDateFormat(this.pattern);	    
 	    this.godsConfig.set(godName + ".power", 1);
-	    Plugin.instance().getServer().broadcastMessage(godName + " has been created");
+	    Plugin.instance().getServer().broadcastMessage(godName + " has gained power");
 	    this.godsConfig.set(godName + ".lastUpdate", formatter.format(thisDate));
 	    save();
 	    return true;

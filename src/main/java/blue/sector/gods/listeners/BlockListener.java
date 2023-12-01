@@ -60,7 +60,7 @@ public class BlockListener implements Listener {
 	    Sign sign = (Sign) state;
 	    String godName = sign.getLine(0);
 	    godName = godName.trim();
-	    player.sendMessage( godName); 
+	    // player.sendMessage( godName); 
 	    if (godName.length() <= 1) {
 		player.sendMessage( ChatColor.DARK_RED + "Invalid god name"); 
 		return;
